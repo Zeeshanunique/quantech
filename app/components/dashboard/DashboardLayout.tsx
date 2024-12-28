@@ -8,7 +8,8 @@ import {
   Cog6ToothIcon,
   Bars3Icon,
   MagnifyingGlassIcon,
-  BellIcon
+  BellIcon,
+  UserCircleIcon
 } from '@heroicons/react/24/outline';
 
 const adminNavigation = [
@@ -21,25 +22,29 @@ const adminNavigation = [
 const employeeNavigation = [
   { name: 'Dashboard', href: '/', icon: HomeIcon },
   { name: 'My Tasks', href: '/my-tasks', icon: ChartBarIcon },
-  { name: 'Profile', href: '/profile', icon: UsersIcon },
+  { name: 'Profile', href: '/profile', icon: UserCircleIcon },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const isAdmin = true; // Replace with actual auth logic
+  const isAdmin = true; // Replace with actual role check
   const navigation = isAdmin ? adminNavigation : employeeNavigation;
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
       <aside className={`${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-        md:translate-x-0 fixed md:static inset-y-0 left-0 w-64 bg-white 
-        border-r border-gray-200 transform transition-transform duration-200 ease-in-out`}>
-        <div className="flex items-center h-16 px-4 border-b border-gray-200">
+        md:translate-x-0 fixed md:static inset-y-0 left-0 w-64 bg-white shadow-lg
+        transition-transform duration-200 ease-in-out z-30`}>
+        
+        {/* Logo */}
+        <div className="h-16 flex items-center justify-between px-4 border-b">
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-xl font-bold">Quantech</span>
           </Link>
         </div>
 
+        {/* Search */}
         <div className="p-4">
           <div className="relative">
             <input
@@ -51,6 +56,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </div>
 
+        {/* Navigation */}
         <nav className="px-4 space-y-1">
           {navigation.map((item) => (
             <Link
@@ -64,19 +70,24 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           ))}
         </nav>
 
-        <div className="absolute bottom-0 w-full p-4 border-t border-gray-200">
+        {/* User Profile */}
+        <div className="absolute bottom-0 w-full p-4 border-t">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+            <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+              <UserCircleIcon className="w-6 h-6 text-gray-500" />
+            </div>
             <div>
               <p className="font-medium">John Doe</p>
-              <p className="text-sm text-gray-500">Admin</p>
+              <p className="text-sm text-gray-500">{isAdmin ? 'Admin' : 'Employee'}</p>
             </div>
           </div>
         </div>
       </aside>
 
+      {/* Main Content */}
       <div className="flex-1">
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4">
+        {/* Header */}
+        <header className="h-16 bg-white border-b flex items-center justify-between px-4 md:px-6">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="md:hidden p-2 rounded-md hover:bg-gray-100"
@@ -91,7 +102,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
         </header>
 
-        <main className="p-6">
+        {/* Page Content */}
+        <main className="p-4 md:p-6">
           {children}
         </main>
       </div>
