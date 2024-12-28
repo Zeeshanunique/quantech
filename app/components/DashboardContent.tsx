@@ -1,8 +1,7 @@
 'use client'
 
-import { Card, CardContent} from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-
 
 const tasks = [
   { id: 1, title: "Complete Project Proposal", assignee: "John Doe", status: "In Progress", dueDate: "2024-03-20" },
@@ -15,7 +14,7 @@ export default function DashboardContent() {
     <div className="space-y-6">
       <header>
         <h1 className="text-3xl font-bold tracking-tight">Welcome Back</h1>
-        <p className="text-muted-foreground">Here's an overview of your dashboard</p>
+        <p className="text-muted-foreground">Here&apos;s an overview of your dashboard</p>
       </header>
     
       <Card>
