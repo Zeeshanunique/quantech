@@ -1,4 +1,3 @@
-import Image from "next/image";
 import DashboardLayout from "./components/DashboardLayout";
 import DashboardContent from "./components/DashboardContent";
 

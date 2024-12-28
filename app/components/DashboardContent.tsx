@@ -4,9 +4,6 @@ import { Card, CardContent} from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 
-
-
-
 const tasks = [
   { id: 1, title: "Complete Project Proposal", assignee: "John Doe", status: "In Progress", dueDate: "2024-03-20" },
   { id: 2, title: "Review Code Changes", assignee: "Sarah Smith", status: "Pending", dueDate: "2024-03-21" },
