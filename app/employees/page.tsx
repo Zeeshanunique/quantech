@@ -1,5 +1,10 @@
 import EmployeeList from "../components/employees/EmployeeList"
+import DashboardLayout from "../components/dashboard/DashboardLayout"
 
 export default function EmployeesPage() {
-  return <EmployeeList />
+  return (
+    <DashboardLayout>
+      <EmployeeList />
+    </DashboardLayout>
+  );
 }

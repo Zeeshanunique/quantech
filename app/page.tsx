@@ -1,12 +1,12 @@
 import DashboardLayout from "./components/dashboard/DashboardLayout";
 import DashboardContent from "./components/dashboard/DashboardContent";
 
-export default function Page() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      <DashboardLayout>
+    <DashboardLayout>
+      <div className="p-6">
         <DashboardContent />
-      </DashboardLayout>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 }
